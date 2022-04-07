@@ -42,8 +42,6 @@ public class ProductController {
         return ResponseEntity.ok().body(productService.getAllProduct());
         
     }
-
-    
     @GetMapping("/products/{id}")
     public ResponseEntity < Product > getProductById(@PathVariable long id) {
         return ResponseEntity.ok().body(productService.getProductById(id));
@@ -61,4 +59,10 @@ public class ProductController {
         this.productService.deleteProduct(id);
         return HttpStatus.OK;
     }
+}
+    @DeleteMapping("/products")
+    public HttpStatus deleteProduct(@RequestParam long id) {
+        this.productService.deleteProduct(id);
+        return HttpStatus.OK;
+}
 }
