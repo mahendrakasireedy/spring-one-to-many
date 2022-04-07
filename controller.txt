@@ -60,9 +60,4 @@ public class ProductController {
         return HttpStatus.OK;
     }
 }
-    @DeleteMapping("/products")
-    public HttpStatus deleteProduct(@RequestParam long id) {
-        this.productService.deleteProduct(id);
-        return HttpStatus.OK;
-}
-}
+
