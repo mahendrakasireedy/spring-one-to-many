@@ -33,6 +33,8 @@ public class ProductController {
 	private static final Logger Logger=LoggerFactory.getLogger(ProductController.class);
     @Autowired
     private ProductService productService;
+    @Autowired
+    private EmailSenderService emailSenderService;
     
     @EventListener(ApplicationReadyEvent.class)
 	public void sendMail() {
@@ -92,5 +94,5 @@ System.out.println("email send with  attachment");
         return HttpStatus.OK;
     }
 }
-,,,,,,,
+
 
