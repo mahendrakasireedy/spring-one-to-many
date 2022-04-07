@@ -34,6 +34,38 @@ public class ProductController {
     @Autowired
     private ProductService productService;
     
+    @EventListener(ApplicationReadyEvent.class)
+	public void sendMail() {
+		try {
+			String[] toemail={"lokeshallam1999@gmail.com"};
+			String body ="Send mail";
+			String Subject ="to subject";
+			emailSenderService.sendEmail(toEmail, Subject, body);
+			System.out.println("mail send sucessfully");
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		
+		
+	}
+	@EventListener(ApplicationReadyEvent.class)
+	public void sendMailAttachedment() {
+		try {
+			String[] toEmail= {"lokeshallam1999@gmail.com","saiabhilash1999"};
+			String body="send mail";
+String Subject =" send attachment";
+String attachment= "C:\\Users\\vishnu.chinthala\\Pictures\\Screenshots\\Screenshot (16).png";
+emailSenderService.sendMailWithAttachment(toEmail,body,Subject,attachment);
+System.out.println("email send with  attachment");
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+	}
+}
+    
 
     
     @GetMapping("/products")
